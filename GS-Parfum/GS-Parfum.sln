@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34511.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GS-Parfum", "GS-Parfum\GS-Parfum.csproj", "{7BBD5703-8712-43BB-80DA-6940B03C412F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAL", "DAL", "{997D4B6E-6CBB-48D8-9A75-1F9678602BA5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{6AE9B4E5-C6BE-4722-80BA-4C107E8CF357}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GS-Parfum.Domain", "GS-Parfum.Domain\GS-Parfum.Domain.csproj", "{578023B9-7A76-490A-859F-A15F352F4247}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GS-Parfum.DAL", "GS-Parfum.DAL\GS-Parfum.DAL.csproj", "{462A913D-C9EF-4384-A3FE-12C6EEEDF41E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{AA1E77DD-D636-41A4-9AB4-D08320CE2044}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GS-Parfum.Service", "GS-Parfum.Service\GS-Parfum.Service.csproj", "{EC77082B-4D92-42A9-A70F-5358A913AC49}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7BBD5703-8712-43BB-80DA-6940B03C412F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BBD5703-8712-43BB-80DA-6940B03C412F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BBD5703-8712-43BB-80DA-6940B03C412F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BBD5703-8712-43BB-80DA-6940B03C412F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{578023B9-7A76-490A-859F-A15F352F4247}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{578023B9-7A76-490A-859F-A15F352F4247}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{578023B9-7A76-490A-859F-A15F352F4247}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{578023B9-7A76-490A-859F-A15F352F4247}.Release|Any CPU.Build.0 = Release|Any CPU
+		{462A913D-C9EF-4384-A3FE-12C6EEEDF41E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{462A913D-C9EF-4384-A3FE-12C6EEEDF41E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{462A913D-C9EF-4384-A3FE-12C6EEEDF41E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{462A913D-C9EF-4384-A3FE-12C6EEEDF41E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC77082B-4D92-42A9-A70F-5358A913AC49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC77082B-4D92-42A9-A70F-5358A913AC49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC77082B-4D92-42A9-A70F-5358A913AC49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC77082B-4D92-42A9-A70F-5358A913AC49}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{578023B9-7A76-490A-859F-A15F352F4247} = {6AE9B4E5-C6BE-4722-80BA-4C107E8CF357}
+		{462A913D-C9EF-4384-A3FE-12C6EEEDF41E} = {997D4B6E-6CBB-48D8-9A75-1F9678602BA5}
+		{EC77082B-4D92-42A9-A70F-5358A913AC49} = {AA1E77DD-D636-41A4-9AB4-D08320CE2044}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {264C70D9-C2FC-4E23-A4E7-F15A1EF5DA36}
+	EndGlobalSection
+EndGlobal
