@@ -119,3 +119,11 @@ D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum\obj\Debug\GS-Parfum.cspro
 D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum\obj\Debug\GS-Parfum.csproj.CopyComplete
 D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum\obj\Debug\GS-Parfum.dll
 D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum\obj\Debug\GS-Parfum.pdb
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum\bin\GS-Parfum.DAL.dll
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum\bin\GS-Parfum.Domain.dll
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum\bin\GS-Parfum.Service.dll
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum\bin\GS-Parfum.DAL.pdb
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum\bin\GS-Parfum.DAL.dll.config
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum\bin\GS-Parfum.Domain.pdb
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum\bin\GS-Parfum.Domain.dll.config
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum\bin\GS-Parfum.Service.pdb

@@ -1,0 +1,12 @@
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.Domain\bin\Debug\GS-Parfum.Domain.dll.config
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.Domain\bin\Debug\GS-Parfum.Domain.dll
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.Domain\bin\Debug\GS-Parfum.Domain.pdb
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.Domain\bin\Debug\EntityFramework.dll
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.Domain\bin\Debug\EntityFramework.SqlServer.dll
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.Domain\bin\Debug\EntityFramework.xml
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.Domain\bin\Debug\EntityFramework.SqlServer.xml
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.Domain\obj\Debug\GS-Parfum.Domain.csproj.AssemblyReference.cache
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.Domain\obj\Debug\GS-Parfum.Domain.csproj.CoreCompileInputs.cache
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.Domain\obj\Debug\GS-Parfum.Domain.csproj.CopyComplete
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.Domain\obj\Debug\GS-Parfum.Domain.dll
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.Domain\obj\Debug\GS-Parfum.Domain.pdb
