@@ -60,8 +60,11 @@
     <Compile Include="Entity\Product\Review.cs" />
     <Compile Include="Entity\Product\SillageRating.cs" />
     <Compile Include="Entity\User\User.cs" />
+    <Compile Include="Enum\ProductTypes.cs" />
+    <Compile Include="Enum\ResponseStatus.cs" />
     <Compile Include="Enum\SexType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Response\BaseResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
