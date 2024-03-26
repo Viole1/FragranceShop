@@ -1,0 +1,15 @@
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.Service\bin\Debug\GS-Parfum.Service.dll
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.Service\bin\Debug\GS-Parfum.Service.pdb
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.Service\bin\Debug\GS-Parfum.DAL.dll
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.Service\bin\Debug\GS-Parfum.Domain.dll
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.Service\bin\Debug\GS-Parfum.DAL.pdb
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.Service\bin\Debug\GS-Parfum.DAL.dll.config
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.Service\bin\Debug\GS-Parfum.Domain.pdb
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.Service\bin\Debug\GS-Parfum.Domain.dll.config
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.Service\obj\Debug\GS-Parfum.Service.csproj.AssemblyReference.cache
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.Service\obj\Debug\GS-Parfum.Service.csproj.CoreCompileInputs.cache
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.Service\obj\Debug\GS-Parfum.Service.csproj.CopyComplete
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.Service\obj\Debug\GS-Parfum.Service.dll
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.Service\obj\Debug\GS-Parfum.Service.pdb
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.Service\bin\Debug\EntityFramework.dll
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.Service\bin\Debug\EntityFramework.xml
