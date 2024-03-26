@@ -17,7 +17,7 @@ namespace GS_Parfum.Domain.Entity.Product
         public ICollection<ProductVolumePrice> VolumePrices { get; set; }
 
         // замени на аккорд и добавь типы едп, едт
-        public ICollection<ProductType> Types { get; set; } // chords
+        public ProductType Type { get; set; } // chords
         public ICollection<Chord> Chords { get; set; }
         public ICollection<Note> TopNotes { get; set; }
         public ICollection<Note> MiddleNotes { get; set; }
