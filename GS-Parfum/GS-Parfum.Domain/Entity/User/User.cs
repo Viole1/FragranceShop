@@ -8,5 +8,6 @@ namespace GS_Parfum.Domain.Entity.User
 {
     public class User
     {
+        public int Id {  get; set; }
     }
 }

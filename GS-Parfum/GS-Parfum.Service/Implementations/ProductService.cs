@@ -110,6 +110,11 @@ namespace GS_Parfum.Service.Implementations
                     NumberOfRatings = model.NumberOfRatings,
                     Country = model.Country,
                     Description = model.Description,
+                    Chords = model.Chords,
+                    TopNotes = model.TopNotes,
+                    MiddleNotes = model.MiddleNotes,
+                    BaseNotes = model.BaseNotes,
+                    VolumePrices = model.VolumePrices
                 };
 
                 await _productRepository.Create(product);
@@ -147,6 +152,11 @@ namespace GS_Parfum.Service.Implementations
                 product.NumberOfRatings = model.NumberOfRatings;
                 product.Country = model.Country;
                 product.Description = model.Description;
+                product.Chords = model.Chords;
+                product.TopNotes = model.TopNotes;
+                product.MiddleNotes = model.MiddleNotes;
+                product.BaseNotes = model.BaseNotes;
+                product.VolumePrices = model.VolumePrices;
 
                 await _productRepository.Update(product);
                 baseResponse.ResponseStatus = ResponseStatus.OK;

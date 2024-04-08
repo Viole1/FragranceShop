@@ -14,7 +14,7 @@ namespace GS_Parfum.DAL
 {
     public class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext() : base("Host=localhost;Port=5432;Database=test2;Username=postgres;Password=04nykk")
+        public ApplicationDbContext() : base("Host=localhost;Port=5432;Database=test2;Username=postgres;Password=13579")
         {
             Database.SetInitializer(new CreateDatabaseIfNotExists<ApplicationDbContext>());
             InitializeDatabase(this);
@@ -22,7 +22,6 @@ namespace GS_Parfum.DAL
 
         public DbSet<Product> Products { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<ProductType> ProductTypes { get; set; }
         public DbSet<Chord> Chords { get; set; }
         public DbSet<Note> Notes { get; set; }
         public DbSet<ProductVolumePrice> ProductVolumePrices { get; set; }
@@ -51,15 +50,15 @@ namespace GS_Parfum.DAL
                 .Property(x => x.Id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             // PRODUCT & PRODUCTTYPE
-            modelBuilder.Entity<Product>()
-                .HasMany(p => p.Types)
-                .WithMany()
-                .Map(m =>
-                {
-                    m.ToTable("ProductProductTypes");
-                    m.MapLeftKey("ProductId");
-                    m.MapRightKey("ProductTypeId");
-                });
+            //modelBuilder.Entity<Product>()
+            //    .HasMany(p => p.Types)
+            //    .WithMany()
+            //    .Map(m =>
+            //    {
+            //        m.ToTable("ProductProductTypes");
+            //        m.MapLeftKey("ProductId");
+            //        m.MapRightKey("ProductTypeId");
+            //    });
             // PRODUCT & CHORDS
             modelBuilder.Entity<Product>()
                 .HasMany(p => p.Chords)
@@ -131,7 +130,7 @@ namespace GS_Parfum.DAL
         {
             //if (!context.Users.Any())
             //{
-            //    context.Users.Add(new User
+            //    context.Users.Add(new User)
             //    {
             //        Name = "Admin",
             //        Password = HashPasswordHelper.HashPassword("12345"),

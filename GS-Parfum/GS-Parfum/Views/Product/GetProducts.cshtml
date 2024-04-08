@@ -1,0 +1,98 @@
+﻿@using GS_Parfum.Domain.Enum
+@using System.ComponentModel.DataAnnotations;
+
+@using System.Reflection;
+
+
+@{
+    ViewBag.Title = "GetProducts";
+    var productTypes = Enum.GetValues(typeof(ProductType)).Cast<ProductType>();
+    var selectedProductType = Request.QueryString["productType"];
+}
+
+<h2>GetProducts</h2>
+
+<body>
+
+    <form method="get">
+        <label for="productType">Выберите тип продукта:</label>
+        <select id="productType" name="productType">
+            <option value="">Все типы</option>
+            @foreach (var type in productTypes)
+            {
+                <option value="@type" @(type.ToString() == selectedProductType ? "selected" : "")>@GetDisplayName(type)</option>
+            }
+        </select>
+        <input type="submit" value="Применить фильтр" />
+        <button type="button" onclick="window.location.href='@Url.Action("GetProducts", "Product")'">Сбросить фильтры</button>
+    </form>
+
+    @foreach (var item in Model)
+    {
+        if (selectedProductType == null || item.Type.ToString() == selectedProductType)
+        {
+            <p>
+                @if (item.Photo != null)
+                {
+                    <img src="data:image;base64,@(Convert.ToBase64String(item.Photo))" alt="Product Photo" />
+                } <br />
+                @item.Name <br />
+                @item.Model <br />
+                Тип: @(GetDisplayName(item.Type)) <br />
+                Пол: @(GetDisplayName(item.Sex)) <br />
+                Основные аккорды:
+                @foreach (var i in item.Chords)
+                {
+                    @i.Name<span>,</span>
+                }
+                <br />
+                Верхние ноты:
+                @foreach (var i in item.TopNotes)
+                {
+                    @i.Name<span>,</span>
+                }
+                <br />
+                Средние ноты:
+                @foreach (var i in item.MiddleNotes)
+                {
+                    @i.Name<span>,</span>
+                }
+                <br />
+                Базовые ноты
+                @foreach (var i in item.BaseNotes)
+                {
+                    @i.Name<span>,</span>
+                }
+                <br />
+                <select>
+                    <option value="">Выберите объём</option>
+                    @foreach (var volumePrice in item.VolumePrices)
+                    {
+                        <option value="@volumePrice.Id">@volumePrice.Volume ml - @volumePrice.Price lei</option>
+                    }
+                </select>
+                <br />
+                @foreach (var rating in item.LongevityRatings)
+                {
+                    @rating.Rating <span> - </span> @rating.NumberOfPeople <br />
+                }
+                <br />
+                @foreach (var rating in item.SillageRatings)
+                {
+                    @rating.Rating <span> - </span> @rating.NumberOfPeople <br />
+                }
+                <br />
+                @Html.ActionLink("перейти", "GetProduct", new { id = item.Id }, new { @class = "card-link" })
+            </p>
+        }
+    }
+</body>
+@functions {
+    public static string GetDisplayName(Enum value)
+    {
+        var field = value.GetType().GetField(value.ToString());
+        var displayAttribute = field.GetCustomAttribute<DisplayAttribute>();
+
+        return displayAttribute != null ? displayAttribute.Name : value.ToString();
+    }
+}
