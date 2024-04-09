@@ -1,0 +1,61 @@
+﻿@model GS_Parfum.Domain.Request.RegistrationRequest
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>Register</h2>
+
+<form asp-action="Register" method="post" enctype="multipart/form-data">
+
+    <div class="form-group">
+        <label asp-for="Username">Username:</label>
+        <input type="text" asp-for="Username" class="form-control" name="model.Username" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email">Email:</label>
+        <input type="text" asp-for="Email" class="form-control" name="model.Email" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Password">Password:</label>
+        <input type="text" asp-for="Password" class="form-control" name="model.Password" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Name">Name:</label>
+        <input type="text" asp-for="Name" class="form-control" name="model.Name" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Surname">Surname:</label>
+        <input type="text" asp-for="Surname" class="form-control" name="model.Surname" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PhoneNumber">Delivery name:</label>
+        <input type="text" asp-for="PhoneNumber" class="form-control" name="model.PhoneNumber" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DeliveryName">Delivery name:</label>
+        <input type="text" asp-for="DeliveryName" class="form-control" name="model.DeliveryName" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DeliveryCity">City:</label>
+        <input type="text" asp-for="DeliveryCity" class="form-control" name="model.DeliveryCity" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DeliveryStreet">Street:</label>
+        <input type="text" asp-for="DeliveryStreet" class="form-control" name="model.DeliveryStreet" />
+    </div>
+    <div class="form-group">
+        <label asp-for="DeliveryHomeNumber">Home number:</label>
+        <input type="text" asp-for="DeliveryHomeNumber" class="form-control" name="model.DeliveryHomeNumber" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>

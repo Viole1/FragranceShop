@@ -77,7 +77,7 @@ namespace GS_Parfum.Service.Implementations
                 if (products.Count() == 0)
                 {
                     baseResponse.Description = "0 elements.";
-                    baseResponse.ResponseStatus = ResponseStatus.SelectFailed;
+                    baseResponse.ResponseStatus = ResponseStatus.OK;
                     return baseResponse;
                 }
 
@@ -106,6 +106,8 @@ namespace GS_Parfum.Service.Implementations
                     Name = model.Name,
                     Model = model.Model,
                     Sex = (SexType)Convert.ToInt32(model.Sex),
+                    VolumePrices = model.VolumePrices,
+                    Type = model.Type,
                     Rating = model.Rating,
                     NumberOfRatings = model.NumberOfRatings,
                     Country = model.Country,
@@ -114,7 +116,6 @@ namespace GS_Parfum.Service.Implementations
                     TopNotes = model.TopNotes,
                     MiddleNotes = model.MiddleNotes,
                     BaseNotes = model.BaseNotes,
-                    VolumePrices = model.VolumePrices
                 };
 
                 await _productRepository.Create(product);
@@ -148,6 +149,8 @@ namespace GS_Parfum.Service.Implementations
                 product.Name = model.Name;
                 product.Model = model.Model;
                 product.Sex = (SexType)Convert.ToInt32(model.Sex);
+                product.VolumePrices = model.VolumePrices;
+                product.Type = model.Type;
                 product.Rating = model.Rating;
                 product.NumberOfRatings = model.NumberOfRatings;
                 product.Country = model.Country;
@@ -156,7 +159,6 @@ namespace GS_Parfum.Service.Implementations
                 product.TopNotes = model.TopNotes;
                 product.MiddleNotes = model.MiddleNotes;
                 product.BaseNotes = model.BaseNotes;
-                product.VolumePrices = model.VolumePrices;
 
                 await _productRepository.Update(product);
                 baseResponse.ResponseStatus = ResponseStatus.OK;

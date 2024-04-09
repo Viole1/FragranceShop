@@ -16,6 +16,10 @@ namespace GS_Parfum.Util
         {
             Bind<IProductRepository>().To<ProductRepository>();
             Bind<IProductService>().To<ProductService>();
+        
+            Bind<IUserRepository>().To<UserRepository>();
+            Bind<IUserService>().To<UserService>();
+
         }
     }
 }

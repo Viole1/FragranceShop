@@ -13,9 +13,4 @@ namespace GS_Parfum.Domain.Response
         public ResponseStatus ResponseStatus { get; set; }
         public T Data { get; set; }
     }
-
-    public interface IBaseRepsonse<T>
-    {
-        T Data { get; set; }
-    }
 }
