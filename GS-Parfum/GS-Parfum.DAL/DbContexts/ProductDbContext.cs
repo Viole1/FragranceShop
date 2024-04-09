@@ -9,19 +9,20 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GS_Parfum.Domain.Entity.Order;
 
-namespace GS_Parfum.DAL
+namespace GS_Parfum.DAL.DbContexts
 {
-    public class ApplicationDbContext : DbContext
+    public class ProductDbContext : DbContext
     {
-        public ApplicationDbContext() : base("Host=localhost;Port=5432;Database=test2;Username=postgres;Password=13579")
+        public ProductDbContext() : base("Host=localhost;Port=5432;Database=GSParfum;Username=postgres;Password=04nykk")
         {
-            Database.SetInitializer(new CreateDatabaseIfNotExists<ApplicationDbContext>());
+            Database.SetInitializer(new CreateDatabaseIfNotExists<ProductDbContext>());
             InitializeDatabase(this);
         }
 
         public DbSet<Product> Products { get; set; }
-        public DbSet<User> Users { get; set; }
+        //public DbSet<Order> Orders { get; set; }
         public DbSet<Chord> Chords { get; set; }
         public DbSet<Note> Notes { get; set; }
         public DbSet<ProductVolumePrice> ProductVolumePrices { get; set; }
@@ -31,34 +32,12 @@ namespace GS_Parfum.DAL
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            // USER--------------------------------------------------------------
-            //modelBuilder.Entity<User>()
-            //    .ToTable("Users")
-            //    .HasKey(x => x.Id)
-            //    .Property(x => x.Id)
-            //    .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-
-            //modelBuilder.Entity<User>()
-            //    .Property(x => x.Name)
-            //    .HasMaxLength(100)
-            //    .IsRequired();
-
             // PRODUCT------------------------------------------------------------
             modelBuilder.Entity<Product>()
                 .ToTable("Products")
                 .HasKey(x => x.Id)
                 .Property(x => x.Id)
                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            // PRODUCT & PRODUCTTYPE
-            //modelBuilder.Entity<Product>()
-            //    .HasMany(p => p.Types)
-            //    .WithMany()
-            //    .Map(m =>
-            //    {
-            //        m.ToTable("ProductProductTypes");
-            //        m.MapLeftKey("ProductId");
-            //        m.MapRightKey("ProductTypeId");
-            //    });
             // PRODUCT & CHORDS
             modelBuilder.Entity<Product>()
                 .HasMany(p => p.Chords)
@@ -126,7 +105,7 @@ namespace GS_Parfum.DAL
                 .HasForeignKey(r => r.UserId);
         }
 
-        private static void InitializeDatabase(ApplicationDbContext context)
+        private static void InitializeDatabase(ProductDbContext context)
         {
             //if (!context.Users.Any())
             //{
