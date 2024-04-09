@@ -23,7 +23,6 @@ namespace GS_Parfum.DAL.Repositories
         {
             // Include нужен для загрузки связанных полей
             return await _db.Products
-                .Include(p => p.Types)
                 .Include(p => p.Chords)
                 .Include(p => p.TopNotes)
                 .Include(p => p.MiddleNotes)

@@ -1,0 +1,238 @@
+﻿﻿@model GS_Parfum.Domain.Entity.Product.Product
+@using GS_Parfum.Domain.Enum
+@using System.ComponentModel.DataAnnotations;
+@{
+    ViewBag.Title = "Save Product";
+}
+
+<h2>Save</h2>
+
+<body>
+    <form asp-action="Save" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="Photo">Photo:</label>
+            <input type="file" asp-for="model.Photo" class="form-control" name="photo" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Name">Name:</label>
+            <input type="text" asp-for="Name" class="form-control" name="model.Name" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Model">Model:</label>
+            <input type="text" asp-for="Model" class="form-control" name="model.Model" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Types">Тип продукта:</label>
+            <select asp-for="Types" class="form-control" name="model.Type">
+                @foreach (ProductType type in Enum.GetValues(typeof(ProductType)))
+                {
+                    var displayName = ((DisplayAttribute)typeof(ProductType).GetMember(type.ToString())[0].GetCustomAttributes(typeof(DisplayAttribute), false)[0]).Name;
+                    <option value="@((int)type)">@displayName</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Sex">Пол:</label>
+            <select asp-for="Sex" class="form-control" name="model.Sex">
+                @foreach (SexType type in Enum.GetValues(typeof(SexType)))
+                {
+                    var displayName = ((DisplayAttribute)typeof(SexType).GetMember(type.ToString())[0].GetCustomAttributes(typeof(DisplayAttribute), false)[0]).Name;
+                    <option value="@((int)type)">@displayName</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group" id="volumePricesContainer">
+            <label>Volume Prices:</label>
+            @if (Model.VolumePrices != null)
+            {
+                var index = 0;
+                foreach (var volumePrice in Model.VolumePrices)
+                {
+                    <div class="volume-price-group">
+                        <div class="form-group">
+                            <label>Volume:</label>
+                            <input type="number" class="form-control" asp-for="VolumePrices[@index].Volume" name="model.VolumePrices[@index].Volume" value="model.VolumePrices[@index].Volume" />
+                        </div>
+                        <div class="form-group">
+                            <label>Price:</label>
+                            <input type="number" step="0.01" class="form-control" asp-for="VolumePrices[@index].Price" name="model.VolumePrices[@index].Price" value="model.VolumePrices[@index].Price" />
+                        </div>
+                    </div>
+                    index++;
+                }
+            }
+            <button type="button" id="addVolumePrice" class="btn btn-success">Add Volume Price</button>
+        </div>
+
+
+        <div class="form-group" id="chordsContainer">
+            <label>Main chords:</label>
+            @if (Model.Chords != null)
+            {
+                var index = 0;
+                foreach (var chord in Model.Chords)
+                {
+                    <div class="chords-group">
+                        <div class="form-group">
+                            <label>Chord:</label>
+                            <input class="form-control" asp-for="Chords[@index]" name="model.Chords[@index].Name" value="model.Chords[@index]" />
+                        </div>
+                    </div>
+                    index++;
+                }
+            }
+            <button type="button" id="addChord" class="btn btn-success">Добавить аккорд</button>
+        </div>
+
+        <div class="form-group" id="topNotesContainer">
+            <label>Top notes:</label>
+            @if (Model.TopNotes != null)
+            {
+                var index = 0;
+                foreach (var chord in Model.TopNotes)
+                {
+                    <div class="notes-group">
+                        <div class="form-group">
+                            <label>Note:</label>
+                            <input class="form-control" asp-for="TopNotes[@index]" name="model.TopNotes[@index].Name" value="model.TopNotes[@index]" />
+                        </div>
+                    </div>
+                    index++;
+                }
+            }
+            <button type="button" id="addTopNote" class="btn btn-success">Добавить верхнюю ноту</button>
+        </div>
+
+        <div class="form-group" id="middleNotesContainer">
+            <label>Middle notes:</label>
+            @if (Model.MiddleNotes != null)
+            {
+                var index = 0;
+                foreach (var chord in Model.MiddleNotes)
+                {
+                    <div class="notes-group">
+                        <div class="form-group">
+                            <label>Note:</label>
+                            <input class="form-control" asp-for="MiddleNotes[@index]" name="model.MiddleNotes[@index].Name" value="model.MiddleNotes[@index]" />
+                        </div>
+                    </div>
+                    index++;
+                }
+            }
+            <button type="button" id="addMiddleNote" class="btn btn-success">Добавить среднюю ноту</button>
+        </div>
+
+        <div class="form-group" id="baseNotesContainer">
+            <label>Base notes:</label>
+            @if (Model.BaseNotes != null)
+            {
+                var index = 0;
+                foreach (var chord in Model.BaseNotes)
+                {
+                    <div class="notes-group">
+                        <div class="form-group">
+                            <label>Note:</label>
+                            <input class="form-control" asp-for="BaseNotes[@index]" name="model.BaseNotes[@index].Name" value="model.BaseNotes[@index]" />
+                        </div>
+                    </div>
+                    index++;
+                }
+            }
+            <button type="button" id="addBaseNote" class="btn btn-success">Добавить базовую ноту</button>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Description">Description:</label>
+            <textarea asp-for="Description" class="form-control" name="model.Description"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+
+    </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#addVolumePrice").click(function () {
+                var newIndex = $(".volume-price-group").length;
+                var volumePriceGroup = '<div class="volume-price-group">' +
+                    '<div class="form-group">' +
+                    '<label>Volume:</label>' +
+                    '<input type="number" class="form-control" asp-for="VolumePrices[' + newIndex + '].Volume" name="model.VolumePrices[' + newIndex + '].Volume" />' +
+                    '</div>' +
+                    '<div class="form-group">' +
+                    '<label>Price:</label>' +
+                    '<input type="number" step="0.01" class="form-control" asp-for="VolumePrices[' + newIndex + '].Price" name="model.VolumePrices[' + newIndex + '].Price" />' +
+                    '</div>' +
+                    '</div>';
+
+                $("#volumePricesContainer").append(volumePriceGroup);
+            });
+        });
+
+        $(document).ready(function () {
+            $("#addChord").click(function () {
+                var newIndex = $(".chords-group").length;
+                var chordsGroup = '<div class="chords-group">' +
+                    '<div class="form-group">' +
+                    '<label>Chords:</label>' +
+                    '<input class="form-control" asp-for="Chords[' + newIndex + '].Name" name="model.Chords[' + newIndex + '].Name" />' +
+                    '</div>' +
+                    '</div>';
+
+                $("#chordsContainer").append(chordsGroup);
+            });
+        });
+
+        $(document).ready(function () {
+            $("#addTopNote").click(function () {
+                var newIndex = $(".top-notes-group").length;
+                var topNoteGroup = '<div class="top-notes-group">' +
+                    '<div class="form-group">' +
+                    '<label>Note:</label>' +
+                    '<input class="form-control" asp-for="TopNotes[' + newIndex + '].Name" name="model.TopNotes[' + newIndex + '].Name" />' +
+                    '</div>' +
+                    '</div>';
+
+                $("#topNotesContainer").append(topNoteGroup);
+            });
+        });
+
+        $(document).ready(function () {
+            $("#addMiddleNote").click(function () {
+                var newIndex = $(".middle-notes-group").length;
+                var middleNoteGroup = '<div class="middle-notes-group">' +
+                    '<div class="form-group">' +
+                    '<label>Note:</label>' +
+                    '<input class="form-control" asp-for="MiddleNotes[' + newIndex + '].Name" name="model.MiddleNotes[' + newIndex + '].Name" />' +
+                    '</div>' +
+                    '</div>';
+
+                $("#middleNotesContainer").append(middleNoteGroup);
+            });
+        });
+
+        $(document).ready(function () {
+            $("#addBaseNote").click(function () {
+                var newIndex = $(".base-notes-group").length;
+                var baseNoteGroup = '<div class="base-notes-group">' +
+                    '<div class="form-group">' +
+                    '<label>Note:</label>' +
+                    '<input class="form-control" asp-for="BaseNotes[' + newIndex + '].Name" name="model.BaseNotes[' + newIndex + '].Name" />' +
+                    '</div>' +
+                    '</div>';
+
+                $("#baseNotesContainer").append(baseNoteGroup);
+            });
+        });
+
+
+    </script>
+</body>
+
