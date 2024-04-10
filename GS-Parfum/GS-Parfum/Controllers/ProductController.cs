@@ -7,7 +7,9 @@ using System.Web;
 using System.Web.Mvc;
 using GS_Parfum.Domain.Entity;
 using GS_Parfum.Domain.Entity.Product;
+using GS_Parfum.Domain.Enum;
 using GS_Parfum.Service.Interfaces;
+using GS_Parfum.Util;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace GS_Parfum.Controllers
@@ -22,6 +24,8 @@ namespace GS_Parfum.Controllers
         }
 
         [HttpGet]
+        [CustomAuthorize(Role.ROLE_USER)]
+
         public async Task<ActionResult> GetProducts()
         {
             var response = await _productService.Select(); // возвращает baseResponse
@@ -29,6 +33,7 @@ namespace GS_Parfum.Controllers
         }
 
         [HttpGet]
+        [CustomAuthorize(Role.ROLE_ADMIN)]
         public async Task<ActionResult> GetProduct(int id)
         {
             var response = await _productService.GetProduct(id);
@@ -37,7 +42,6 @@ namespace GS_Parfum.Controllers
             return RedirectToAction("Error");
         }
 
-        // [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(int id)
         {
             var response = await _productService.DeleteProduct(id);

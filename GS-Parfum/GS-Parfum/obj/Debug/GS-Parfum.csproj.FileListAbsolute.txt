@@ -127,3 +127,14 @@ D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum\bin\GS-Parfum.DAL.dll.con
 D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum\bin\GS-Parfum.Domain.pdb
 D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum\bin\GS-Parfum.Domain.dll.config
 D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum\bin\GS-Parfum.Service.pdb
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum\bin\Microsoft.IdentityModel.Abstractions.dll
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum\bin\Microsoft.IdentityModel.Logging.dll
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum\bin\Microsoft.IdentityModel.Tokens.dll
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum\bin\System.IdentityModel.Tokens.Jwt.dll
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum\bin\GS-Parfum.Service.dll.config
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum\bin\Microsoft.IdentityModel.Abstractions.xml
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum\bin\Microsoft.IdentityModel.Logging.xml
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum\bin\Microsoft.IdentityModel.Tokens.xml
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum\bin\System.IdentityModel.Tokens.Jwt.xml
