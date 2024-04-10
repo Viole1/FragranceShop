@@ -7,14 +7,15 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GS_Parfum.DAL.DbContexts;
 
 namespace GS_Parfum.DAL.Repositories
 {
     public class ProductRepository : IProductRepository
     {
-        private readonly ApplicationDbContext _db;
+        private readonly ProductDbContext _db;
 
-        public ProductRepository(ApplicationDbContext db)
+        public ProductRepository(ProductDbContext db)
         {
             _db = db;
         }
