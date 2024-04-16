@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Cart";
+}
+
+<h2>Cart</h2>
+
+@if (Model != null)
+{
+    <p>
+        Парфюмы:
+        @foreach (var i in Model.Items)
+        {
+            @i.Name<span> </span> @i.Model<span>, </span><br />
+        }
+        
+        @Model.TotalPrice
+    </p>
+}

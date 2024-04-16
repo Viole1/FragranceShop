@@ -10,5 +10,6 @@ namespace GS_Parfum.DAL.Interfaces
     public interface IProductRepository : IBaseRepository<Product>
     {
         Task<Product> GetByName(string name);
+        Task<ProductVolumePrice> GetVolumePriceById(int id);
     }
 }
