@@ -51,7 +51,16 @@ namespace GS_Parfum.DAL.Repositories
 
         public async Task<Product> Get(int id)
         {
-            return await _db.Products.FirstOrDefaultAsync(x => x.Id == id);
+            return await _db.Products
+                .Include(p => p.Chords)
+                .Include(p => p.TopNotes)
+                .Include(p => p.MiddleNotes)
+                .Include(p => p.BaseNotes)
+                .Include(p => p.VolumePrices)
+                .Include(p => p.LongevityRatings)
+                .Include(p => p.SillageRatings)
+                .Include(p => p.Reviews)
+                .FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<Product> GetByName(string name)
@@ -65,6 +74,11 @@ namespace GS_Parfum.DAL.Repositories
             await _db.SaveChangesAsync();
 
             return entity;
+        }
+
+        public async Task<ProductVolumePrice> GetVolumePriceById(int id)
+        {
+            return await _db.ProductVolumePrices.FirstOrDefaultAsync(x => x.Id ==id);
         }
     }
 }

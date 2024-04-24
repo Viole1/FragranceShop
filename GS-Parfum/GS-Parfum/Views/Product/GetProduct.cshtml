@@ -1,8 +1,91 @@
-﻿@{
+﻿@using GS_Parfum.Domain.Enum
+@using System.ComponentModel.DataAnnotations;
+
+@using System.Reflection;
+@{
     ViewBag.Title = "GetProduct";
 }
 
 <h2>GetProduct</h2>
 
-<p>Name: @Model.Name</p>
-<p>Model: @Model.Model</p>
+@if (Model != null)
+{
+    <p>
+        @if (Model.Photo != null)
+        {
+            <img src="data:image;base64,@(Convert.ToBase64String(Model.Photo))" alt="Product Photo" />
+        } <br />
+        Name: @Model.Name <br />
+        Model: @Model.Model <br />
+        Type: @(GetDisplayName(Model.Type)) <br />
+        Gender: @(GetDisplayName(Model.Sex)) <br />
+        Main Accords:
+        @foreach (var i in Model.Chords)
+        {
+            @i.Name<span>,</span>
+        }
+        <br />
+        Top Notes:
+        @foreach (var i in Model.TopNotes)
+        {
+            @i.Name<span>,</span>
+        }
+        <br />
+        Middle Notes:
+        @foreach (var i in Model.MiddleNotes)
+        {
+            @i.Name<span>,</span>
+        }
+        <br />
+        Base Notes:
+        @foreach (var i in Model.BaseNotes)
+        {
+            @i.Name<span>,</span>
+        }
+
+        <br />
+        Longevity Ratings:
+        @foreach (var rating in Model.LongevityRatings)
+        {
+            @rating.Rating <span> - </span> @rating.NumberOfPeople <br />
+        }
+        <br />
+        Sillage Ratings:
+        @foreach (var rating in Model.SillageRatings)
+        {
+            @rating.Rating <span> - </span> @rating.NumberOfPeople <br />
+        }
+        <br />
+    </p>
+    <form action="/Cart/AddCartItem" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="cartItem.ProductId" value="@Model.Id">
+        <input type="hidden" name="cartItem.Name" value="@Model.Name">
+        <input type="hidden" name="cartItem.Model" value="@Model.Model">
+
+        <select id="volumePriceSelect" name="cartItem.VolumePriceId">
+            <option value="">Choose volume</option>
+            @foreach (var volumePrice in Model.VolumePrices)
+            {
+                <option value="@volumePrice.Id">@volumePrice.Volume ml - @volumePrice.Price lei</option>
+            }
+        </select>
+        <br />
+
+        <button type="submit" id="addToCart" class="btn btn-success">Добавить в корзину</button>
+    </form>
+    
+
+}
+else
+{
+    <p>Product not found.</p>
+}
+@functions {
+    public static string GetDisplayName(Enum value)
+    {
+        var field = value.GetType().GetField(value.ToString());
+        var displayAttribute = field.GetCustomAttribute<DisplayAttribute>();
+
+        return displayAttribute != null ? displayAttribute.Name : value.ToString();
+    }
+}

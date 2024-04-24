@@ -1,4 +1,4 @@
-﻿using GS_Parfum.DAL.Interfaces;
+﻿using GS_Parfum.Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -11,16 +11,17 @@ namespace GS_Parfum.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IUserRepository _userRepository;
-        public HomeController(IUserRepository userRepository)
-        {
-            _userRepository = userRepository;
-        }
+        private readonly IProductService _productService;
 
+        public HomeController(IProductService productService)
+        {
+            _productService = productService;
+        }
         public ActionResult Index()
         {
             return View();
         }
+
 
         public ActionResult About()
         {

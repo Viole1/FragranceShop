@@ -10,12 +10,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GS_Parfum.Domain.Entity.Order;
+using GS_Parfum.Domain.Entity.Cart;
 
 namespace GS_Parfum.DAL.DbContexts
 {
     public class ProductDbContext : DbContext
     {
-        public ProductDbContext() : base("Host=localhost;Port=5432;Database=GSParfum;Username=postgres;Password=04nykk")
+        public ProductDbContext() : base("Host=localhost;Port=5432;Database=GSParfum;Username=postgres;Password=13579")
         {
             Database.SetInitializer(new CreateDatabaseIfNotExists<ProductDbContext>());
             InitializeDatabase(this);
@@ -29,6 +30,8 @@ namespace GS_Parfum.DAL.DbContexts
         public DbSet<LongevityRating> LongevityRatings { get; set; }
         public DbSet<SillageRating> SillageRatings { get; set; }
         public DbSet<Review> Reviews { get; set; }
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<CartItem> CartItems { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
