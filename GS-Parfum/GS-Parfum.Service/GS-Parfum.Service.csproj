@@ -85,8 +85,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementations\CartService.cs" />
+    <Compile Include="Implementations\OrderService.cs" />
     <Compile Include="Implementations\ProductService.cs" />
     <Compile Include="Implementations\UserService.cs" />
+    <Compile Include="Interfaces\ICartService.cs" />
+    <Compile Include="Interfaces\IOrderService.cs" />
     <Compile Include="Interfaces\IProductService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

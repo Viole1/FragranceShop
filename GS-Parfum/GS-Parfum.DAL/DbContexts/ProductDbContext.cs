@@ -16,20 +16,21 @@ namespace GS_Parfum.DAL.DbContexts
 {
     public class ProductDbContext : DbContext
     {
-        public ProductDbContext() : base("Host=localhost;Port=5432;Database=GSParfum;Username=postgres;Password=13579")
+        public ProductDbContext() : base("Host=localhost;Port=5432;Database=GSParfum;Username=postgres;Password=04nykk")
         {
             Database.SetInitializer(new CreateDatabaseIfNotExists<ProductDbContext>());
             InitializeDatabase(this);
         }
 
         public DbSet<Product> Products { get; set; }
-        //public DbSet<Order> Orders { get; set; }
         public DbSet<Chord> Chords { get; set; }
         public DbSet<Note> Notes { get; set; }
         public DbSet<ProductVolumePrice> ProductVolumePrices { get; set; }
         public DbSet<LongevityRating> LongevityRatings { get; set; }
         public DbSet<SillageRating> SillageRatings { get; set; }
-        public DbSet<Review> Reviews { get; set; }
+        // public DbSet<Review> Reviews { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
         public DbSet<Cart> Carts { get; set; }
         public DbSet<CartItem> CartItems { get; set; }
 
@@ -110,17 +111,6 @@ namespace GS_Parfum.DAL.DbContexts
 
         private static void InitializeDatabase(ProductDbContext context)
         {
-            //if (!context.Users.Any())
-            //{
-            //    context.Users.Add(new User)
-            //    {
-            //        Name = "Admin",
-            //        Password = HashPasswordHelper.HashPassword("12345"),
-            //        Role = Role.ROLE_ADMIN
-            //    });
-
-            //    context.SaveChanges();
-            //}
             if (!context.Chords.Any())
             {
                 context.Chords.AddRange(new List<Chord>
