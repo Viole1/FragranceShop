@@ -49,11 +49,5 @@ namespace GS_Parfum.Domain.Entity.User
         //[Required]
         [StringLength(20)]
         public string DeliveryHomeNumber { get; set; }
-
-        public List<Product.Product> Wishlist { get; set; }
-
-        public List<Order.Order> OrderHistory { get; set; }
-
-        // public Cart Сart { get; set; }
     }
 }

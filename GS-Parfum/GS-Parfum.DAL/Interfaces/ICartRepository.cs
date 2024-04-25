@@ -10,5 +10,6 @@ namespace GS_Parfum.DAL.Interfaces
     public interface ICartRepository :IBaseRepository<Cart>
     {
         Task<Cart> GetCartByUserId(int id);
+        Task<bool> ClearCart(int id);
     }
 }

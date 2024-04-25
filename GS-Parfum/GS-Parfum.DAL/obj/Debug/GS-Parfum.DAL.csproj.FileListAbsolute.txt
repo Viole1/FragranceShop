@@ -36,3 +36,13 @@ D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.DAL\obj\Debug\GS-Parfum.D
 D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.DAL\obj\Debug\GS-Parfum.DAL.csproj.CopyComplete
 D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.DAL\obj\Debug\GS-Parfum.DAL.dll
 D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.DAL\obj\Debug\GS-Parfum.DAL.pdb
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.DAL\bin\Debug\Microsoft.IdentityModel.Abstractions.dll
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.DAL\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.DAL\bin\Debug\Microsoft.IdentityModel.Logging.dll
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.DAL\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.DAL\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.DAL\bin\Debug\Microsoft.IdentityModel.Abstractions.xml
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.DAL\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.xml
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.DAL\bin\Debug\Microsoft.IdentityModel.Logging.xml
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.DAL\bin\Debug\Microsoft.IdentityModel.Tokens.xml
+D:\programming\codes\с#\GS-Parfum\GS-Parfum\GS-Parfum.DAL\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
