@@ -10,7 +10,7 @@ namespace GS_Parfum.DAL.DbContexts
 {
     public class OrderDbContext : DbContext
     {
-        public OrderDbContext() : base("Host=localhost;Port=5432;Database=GSParfum;Username=postgres;Password=04nykk")
+        public OrderDbContext() : base("Host=localhost;Port=5432;Database=GSParfum;Username=postgres;Password=13579")
         {
             Database.SetInitializer(new CreateDatabaseIfNotExists<OrderDbContext>());
         }

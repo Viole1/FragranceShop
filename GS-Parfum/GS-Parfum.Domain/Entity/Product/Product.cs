@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GS_Parfum.Domain.Entity;
 
 namespace GS_Parfum.Domain.Entity.Product
 {
@@ -18,6 +19,8 @@ namespace GS_Parfum.Domain.Entity.Product
 
         // замени на аккорд и добавь типы едп, едт
         public ProductType Type { get; set; } // chords
+
+
         public ICollection<Chord> Chords { get; set; }
         public ICollection<Note> TopNotes { get; set; }
         public ICollection<Note> MiddleNotes { get; set; }
@@ -27,17 +30,15 @@ namespace GS_Parfum.Domain.Entity.Product
         public SexType Sex { get; set; }
 
         // десятичное число и флакончик со звездочкой
-        public decimal Rating { get; set; }
+        public int Rating { get; set; }
         public int NumberOfRatings { get; set; }
 
-        public string Country { get; set; }
+
         public string Description { get; set; }
 
         // будут просто полоски с указанием количества голос за тот или иной варик
-        public ICollection<LongevityRating> LongevityRatings { get; set; }
-        public ICollection<SillageRating> SillageRatings { get; set; }
-
-        public List<Product> SimilarProducts { get; set; }
+        public List<LongevityRating> LongevityRatings { get; set; }
+        public List<SillageRating> SillageRatings { get; set; }
 
         public List<Review> Reviews { get; set; }
     }

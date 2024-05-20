@@ -25,6 +25,9 @@ namespace GS_Parfum.Util
 
             Bind<IOrderRepository>().To<OrderRepository>();
             Bind<IOrderService>().To<OrderService>();
+
+            Bind<IReviewRepository>().To<ReviewRepository>();
+            Bind<IReviewService>().To<ReviewService>();
         }
     }
 }
