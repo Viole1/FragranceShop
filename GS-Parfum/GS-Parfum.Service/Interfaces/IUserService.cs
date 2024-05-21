@@ -13,5 +13,7 @@ namespace GS_Parfum.Service.Interfaces
     {
         Task<LoginResponse> Login(LoginRequest loginRequest);
         Task<BaseResponse<User>> Register(RegistrationRequest registrationRequest);
+        Task<BaseResponse<bool>> Update(User user);
+        Task<BaseResponse<User>> GetUserById(int id);
     }
 }

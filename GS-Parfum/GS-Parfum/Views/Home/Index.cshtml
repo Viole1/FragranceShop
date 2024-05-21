@@ -1,33 +1,118 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = "Home Page";
 }
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин Парфюмерии</title>
+    <style>
+        .slideshow-container {
+            width: 100%;
+            position: relative;
+            margin: auto;
+        }
 
-<main>
-    <section class="row" aria-labelledby="aspnetTitle">
-        <h1 id="title">ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="https://asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
-    </section>
+        .mySlides {
+            width: 100%;
+            display: none;
+        }
 
-    <div class="row">
-        <section class="col-md-4" aria-labelledby="gettingStartedTitle">
-            <h2 id="gettingStartedTitle">Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="librariesTitle">
-            <h2 id="librariesTitle">Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="hostingTitle">
-            <h2 id="hostingTitle">Web Hosting</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-        </section>
+        .slideshow-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            margin-top: -22px;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+            .prev:hover, .next:hover {
+                background-color: rgba(0, 0, 0, 0.8);
+            }
+    </style>
+</head>
+<body>
+
+    <div class="slideshow-container">
+        <div class="mySlides">
+            <img src="~/Images/Index/1.png" alt="Slide 1">
+        </div>
+
+        <div class="mySlides">
+            <img src="~/Images/Index/2.png" alt="Slide 2">
+        </div>
+
+        <div class="mySlides">
+            <img src="~/Images/Index/3.png" alt="Slide 3">
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
     </div>
-</main>
+
+    <div>
+        <div>Наши магазины:</div>
+        <div class="store-images">
+            <img src="~/Images/Index/our1.jpg" alt="Store 1">
+            <img src="~/Images/Index/our2.jpg" alt="Store 2">
+            <img src="~/Images/Index/our3.jpg" alt="Store 3">
+            <img src="~/Images/Index/our4.jpg" alt="Store 4">
+            <img src="~/Images/Index/our5.jpg" alt="Store 5">
+        </div>
+    </div>
+
+    <style>
+        .store-images {
+            display: flex;
+        }
+
+            .store-images img {
+                width: 20%; 
+                margin-right: 10px; 
+            }
+
+                .store-images img:last-child {
+                    margin-right: 0;
+                }
+    </style>
+
+    <script>
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex - 1].style.display = "block";
+        }
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+    </script>
+
+</body>
+</html>

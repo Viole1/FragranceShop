@@ -11,7 +11,7 @@ namespace GS_Parfum.DAL.DbContexts
 {
 	public class UserDbContext : DbContext
 	{
-		public UserDbContext() : base("Host=localhost;Port=5432;Database=GSParfum;Username=postgres;Password=13579")
+		public UserDbContext() : base("Host=localhost;Port=5432;Database=GSParfum;Username=postgres;Password=04nykk")
 		{
 			Database.SetInitializer(new CreateDatabaseIfNotExists<UserDbContext>());
 			InitializeDatabase(this);

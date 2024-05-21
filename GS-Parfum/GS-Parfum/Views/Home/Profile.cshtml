@@ -1,26 +1,211 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Profile";
 }
 
-<h2>Profile</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Контактное меню</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
 
-<div class="contact_data">
-    <p>
-        Ваше имя </br>
-        @Model.Name
-    </p>
-    <p>
-        Фамилия </br>
-        @Model.Surname
-    </p>
+        .sidebar {
+            height: 50vh;
+            width: 250px;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            background-color: #FFFFFF;
+            color: white;
+            padding: 10px;
+        }
 
-    <p>
-        Email </br>
-        @Model.Email
-    </p>
-    <p>
-        Телефон </br>
-        @Model.PhoneNumber
-    </p>
-</div>
+        .menu-button {
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #FFFFFF;
+            color: #212529;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+        }
+
+            .menu-button:hover {
+                background-color: #8ca2b8;
+            }
+
+        .content {
+            margin-left: 60px;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+            .tab-content.active {
+                display: block;
+            }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <button class="menu-button" data-target="contact-info">Контактная информация</button>
+        <button class="menu-button" data-target="address-book">Адресная книга</button>
+        <button class="menu-button" data-target="order-history">История заказов</button>
+    </div>
+
+    <div class="content">
+        <div id="contact-info" class="tab-content active">
+            <h2>Контактная информация</h2>
+            <p>
+                <strong>Имя:</strong> @Model.Name<br />
+                <strong>Фамилия:</strong> @Model.Surname<br />
+                <strong>Email:</strong> @Model.Email<br />
+                <strong>Телефон:</strong> @Model.PhoneNumber
+            </p>
+            <div id="update-contact-info">
+                <h3>Редактировать</h3>
+                <form id="address-form" action="/User/UpdateInfo" method="post">
+                    <input type="hidden" name="user.Id" value="@Model.Id" />
+                    <input type="hidden" name="user.Role" value="@Model.Role" />
+                    <input type="text" name="user.Name" placeholder="Имя" />
+                    <input type="text" name="user.Surname" placeholder="Фамилия" />
+                    <input type="hidden" name="user.Username" value="@Model.Username" />
+                    <input type="hidden" name="user.Password" value="@Model.Password" />
+                    <input type="text" name="user.Email" placeholder="Электронная почта" />
+                    <input type="text" name="user.PhoneNumber" placeholder="Номер телефона" />
+                    <input type="hidden" name="user.DeliveryName" value="@Model.DeliveryName" />
+                    <input type="hidden" name="user.DeliveryCity" value="@Model.DeliveryCity" />
+                    <input type="hidden" name="user.DeliveryStreet" value="@Model.DeliveryStreet" />
+                    <input type="hidden" name="user.DeliveryHomeNumber" value="@Model.DeliveryHomeNumber" />
+                    <button type="submit">Сохранить</button>
+                </form>
+            </div>
+        </div>
+
+
+        <div id="address-book" class="tab-content">
+            <h2>Адресная книга</h2>
+            <p>
+                <strong>Имя доставки:</strong> @Model.DeliveryName<br />
+                <strong>Город доставки:</strong> @Model.DeliveryCity<br />
+                <strong>Улица доставки:</strong> @Model.DeliveryStreet<br />
+                <strong>Дом доставки:</strong> @Model.DeliveryHomeNumber
+            </p>
+            <div id="update-address-info">
+                <h3>Редактировать</h3>
+                <form id="address-form" action="/User/UpdateInfo" method="post">
+                    <input type="hidden" name="user.Id" value="@Model.Id" />
+                    <input type="hidden" name="user.Role" value="@Model.Role" />
+                    <input type="hidden" name="user.Name" value="@Model.Name" />
+                    <input type="hidden" name="user.Surname" value="@Model.Surname" />
+                    <input type="hidden" name="user.Username" value="@Model.Username" />
+                    <input type="hidden" name="user.Password" value="@Model.Password" />
+                    <input type="hidden" name="user.Email" value="@Model.Email" />
+                    <input type="hidden" name="user.PhoneNumber" value="@Model.PhoneNumber" />
+                    <input type="text" name="user.DeliveryName" placeholder="Имя доставки" />
+                    <input type="text" name="user.DeliveryCity" placeholder="Город доставки" />
+                    <input type="text" name="user.DeliveryStreet" placeholder="Улица доставки" />
+                    <input type="text" name="user.DeliveryHomeNumber" placeholder="Дом доставки" />
+                    <button type="submit">Сохранить</button>
+                </form>
+            </div>
+        </div>
+
+
+        <div id="order-history" class="tab-content">
+            <h2>История заказов</h2>
+            <p>Здесь можно просмотреть историю заказов.</p>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+        document.querySelectorAll('.menu-button').forEach(button => {
+            button.addEventListener('click', () => {
+                document.querySelectorAll('.tab-content').forEach(section => {
+                    section.classList.remove('active');
+                });
+
+                const targetId = button.getAttribute('data-target');
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.menu-button').click(function () {
+                $('.tab-content').removeClass('active');
+
+                const targetId = $(this).attr('data-target');
+                const targetElement = $('#' + targetId);
+
+                if (targetId === 'order-history') {
+                    $.ajax({
+                        url: '/Order/OrderList', // URL вашего контроллера
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function (orders) {
+                            let orderHistoryHtml = '<h2>История заказов</h2>';
+
+                            if (orders.length === 0) {
+                                orderHistoryHtml += '<p>У вас нет истории заказов.</p>';
+                            } else {
+                                orders.forEach(order => {
+                                    orderHistoryHtml += `
+                                            <div class="order">
+                                                <h3>Заказ #${order.Id} - ${formatOrderDate(order.OrderDate)}</h3>
+                                                <p><strong>Общая стоимость:</strong> $${order.TotalPrice.toFixed(2)}</p>
+                                                <p><strong>Статус:</strong> ${order.Status === 0 ? 'В процессе' : 'Завершен'}</p>
+                                                <h4>Товары в заказе:</h4>
+                                                <ul>
+                                                    ${order.CartItems.map(item => `
+                                                        <li>${item.Name} - ${item.Model}</li>
+                                                    `).join('')}
+                                                </ul>
+                                            </div>
+                                        `;
+                                });
+                            }
+
+                            targetElement.html(orderHistoryHtml);
+                        },
+                        error: function (xhr, status, error) {
+                            console.error('Ошибка при загрузке истории заказов:', error);
+                            targetElement.html('<p>Ошибка при загрузке истории заказов.</p>');
+                        }
+                    });
+                }
+
+                targetElement.addClass('active');
+            });
+        });
+
+        function formatOrderDate(orderDate) {
+            const regex = /\/Date\((\d+)\)\//;
+            const matches = regex.exec(orderDate);
+            if (matches) {
+                const timestamp = parseInt(matches[1]);
+                return new Date(timestamp).toLocaleString();
+            } else {
+                return 'Неизвестно';
+            }
+        }
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#quit').click(function () {
+                $.post('/user/logout', function (data) {
+                    window.location.href = '/home/index';
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

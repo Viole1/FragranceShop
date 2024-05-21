@@ -10,8 +10,6 @@
     var selectedProductType = Request.QueryString["productType"];
 }
 
-<h2>GetProducts</h2>
-
 <body>
 
     <form method="get">
@@ -62,24 +60,6 @@
                 @foreach (var i in item.BaseNotes)
                 {
                     @i.Name<span>,</span>
-                }
-                <br />
-                <select>
-                    <option value="">Выберите объём</option>
-                    @foreach (var volumePrice in item.VolumePrices)
-                    {
-                        <option value="@volumePrice.Id">@volumePrice.Volume ml - @volumePrice.Price lei</option>
-                    }
-                </select>
-                <br />
-                @foreach (var rating in item.LongevityRatings)
-                {
-                    @rating.Rating <span> - </span> @rating.NumberOfPeople <br />
-                }
-                <br />
-                @foreach (var rating in item.SillageRatings)
-                {
-                    @rating.Rating <span> - </span> @rating.NumberOfPeople <br />
                 }
                 <br />
                 @Html.ActionLink("перейти", "GetProduct", new { id = item.Id }, new { @class = "card-link" })
