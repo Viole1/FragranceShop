@@ -40,7 +40,7 @@ namespace GS_Parfum.DAL.Repositories
 
         public async Task<Cart> Get(int id)
         {
-            return await _db.Carts.FirstOrDefaultAsync(x => x.Id == id);
+            return await _db.Carts.Include(c => c.Items).FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<List<Cart>> Select()
@@ -60,6 +60,18 @@ namespace GS_Parfum.DAL.Repositories
             _db.Carts.AddOrUpdate(entity);
             await _db.SaveChangesAsync();
             return entity;
+        }
+        public async Task<bool> ClearCart(int id)
+        {
+            var cart = await _db.Carts.Include(i => i.Items).FirstOrDefaultAsync(x => x.Id == id);
+            if (cart != null)
+            {
+                cart.TotalPrice = 0;
+                cart.Items.Clear();
+                await _db.SaveChangesAsync();
+                return true;
+            }
+            return false;
         }
     }
 }

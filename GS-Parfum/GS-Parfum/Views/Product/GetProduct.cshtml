@@ -73,7 +73,50 @@
 
         <button type="submit" id="addToCart" class="btn btn-success">Добавить в корзину</button>
     </form>
-    
+
+    <form action="/Review/AddReview" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="review.ProductId" value="@Model.Id">
+
+        <label for="rateSelect">Rate:</label>
+        <select id="rateSelect" name="review.Rate">
+            <option value="0">Choose rate</option>
+            @for (int i = 1; i <= 5; i++)
+            {
+                <option value="@i">@i</option>
+            }
+        </select>
+        <br />
+
+        <label for="longevetyRateSelect">Longevity Rate:</label>
+        <select id="longevetyRateSelect" name="review.LongevetyRate">
+            <option value="0">Choose rate</option>
+            @for (int i = 1; i <= 5; i++)
+            {
+                <option value="@i">@i</option>
+            }
+        </select>
+        <br />
+
+        <label for="sillageRateSelect">Sillage Rate:</label>
+        <select id="sillageRateSelect" name="review.SillageRate">
+            <option value="0">Choose rate</option>
+            @for (int i = 1; i <= 5; i++)
+            {
+                <option value="@i">@i</option>
+            }
+        </select>
+        <br />
+        <label for="contentTextArea">Review Content:</label>
+        <textarea id="contentTextArea" name="review.Content" rows="4" cols="50" placeholder="Write your review here..."></textarea>
+        <br />
+
+        <button type="submit" id="addReview" class="btn btn-success">Добавить отзыв</button>
+    </form>
+
+    <h3>Reviews</h3>
+    <div id="reviewsContainer">
+    </div>
+
 
 }
 else
@@ -89,3 +132,63 @@ else
         return displayAttribute != null ? displayAttribute.Name : value.ToString();
     }
 }
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var productId = @Model.Id;
+
+        $.ajax({
+            url: "/Review/GetReviews",
+            data: { productId: productId },
+            type: "GET",
+            success: function(reviews) {
+                var reviewsContainer = $("#reviewsContainer");
+
+                if (reviews && reviews.length > 0) {
+                    reviews.forEach(function(review) {
+                        var reviewDate = new Date(review.Date);
+                        var formattedDate = formatDate(review.Date);
+
+                        var reviewHtml = `
+                            <div class="review">
+                                <p><strong>Username:</strong> ${review.Name}</p>
+                                <p><strong>Rate:</strong> ${review.Rate}</p>
+                                <p><strong>Longevity Rate:</strong> ${review.LongevetyRate}</p>
+                                <p><strong>Sillage Rate:</strong> ${review.SillageRate}</p>
+                                <p><strong>Content:</strong> ${review.Content}</p>
+                                <p><strong>Date:</strong> ${formattedDate}</p>
+                            </div>
+                        `;
+                        reviewsContainer.append(reviewHtml);
+                    });
+                } else {
+                    reviewsContainer.append("<p>No reviews yet for this product.</p>");
+                }
+            },
+            error: function(err) {
+                console.error("Error fetching reviews:", err);
+                $("#reviewsContainer").append("<p>Error fetching reviews.</p>");
+            }
+        });
+    });
+    function formatDate(reviewDate) {
+        const regex = /\/Date\((\d+)\)\//;
+        const matches = regex.exec(reviewDate);
+        if (matches) {
+            const timestamp = parseInt(matches[1]);
+            return new Date(timestamp).toLocaleString();
+        } else {
+            return 'Неизвестно';
+        }
+    }
+</script>
+
+<style>
+    .review {
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 5px;
+    }
+</style>

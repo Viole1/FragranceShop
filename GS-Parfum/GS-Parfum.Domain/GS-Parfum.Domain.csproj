@@ -91,6 +91,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\Cart\Cart.cs" />
+    <Compile Include="Entity\Cart\CartItem.cs" />
     <Compile Include="Entity\Order\Order.cs" />
     <Compile Include="Entity\Product\Chord.cs" />
     <Compile Include="Entity\Product\LongevityRating.cs" />
@@ -100,6 +102,7 @@
     <Compile Include="Entity\Product\Review.cs" />
     <Compile Include="Entity\Product\SillageRating.cs" />
     <Compile Include="Entity\User\User.cs" />
+    <Compile Include="Enum\OrderStatus.cs" />
     <Compile Include="Enum\ProductType.cs" />
     <Compile Include="Enum\ResponseStatus.cs" />
     <Compile Include="Enum\Role.cs" />

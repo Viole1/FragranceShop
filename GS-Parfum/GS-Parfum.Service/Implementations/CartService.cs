@@ -86,5 +86,22 @@ namespace GS_Parfum.Service.Implementations
                 };
             }
         }
+        public async Task<BaseResponse<bool>> ClearCart(int id)
+        {
+            var baseResponse = new BaseResponse<bool>();
+            try
+            {
+                baseResponse.Data = await _cartRepository.ClearCart(id);
+                baseResponse.ResponseStatus = ResponseStatus.OK;
+                return baseResponse;
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<bool>()
+                {
+                    Description = $"[ClearCart] : {ex.Message}",
+                };
+            }
+        }
     }
 }

@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "OrderList";
+}
+
+<h2>OrderList</h2>
+
+@foreach (var order in Model)
+{
+    <span>Заказ №</span> @order.Id
+    <br />
+    <span>Статус: </span>@order.Status
+    <br />
+    foreach (var item in order.CartItems)
+    {
+        @item.Name <span> </span>
+        @item.Model
+    }
+    <span>Цена: </span>@order.TotalPrice
+    <br />
+    <span>Дата заказа: </span>@order.OrderDate<br />
+    <span>Имя заказчика: </span>@order.DeliveryName<br />
+    <span>Город: </span>@order.DeliveryCity<br />
+    <span>Улица: </span>@order.DeliveryStreet<br />
+    <span>Номер дома: </span>@order.DeliveryHomeNumber
+    <br />
+}

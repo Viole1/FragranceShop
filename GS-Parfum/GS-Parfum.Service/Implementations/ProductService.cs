@@ -110,7 +110,6 @@ namespace GS_Parfum.Service.Implementations
                     Type = model.Type,
                     Rating = model.Rating,
                     NumberOfRatings = model.NumberOfRatings,
-                    Country = model.Country,
                     Description = model.Description,
                     Chords = model.Chords,
                     TopNotes = model.TopNotes,
@@ -153,7 +152,6 @@ namespace GS_Parfum.Service.Implementations
                 product.Type = model.Type;
                 product.Rating = model.Rating;
                 product.NumberOfRatings = model.NumberOfRatings;
-                product.Country = model.Country;
                 product.Description = model.Description;
                 product.Chords = model.Chords;
                 product.TopNotes = model.TopNotes;
@@ -200,6 +198,66 @@ namespace GS_Parfum.Service.Implementations
                     ResponseStatus = ResponseStatus.InternalServerError,
                 };
             }
+        }
+
+        public async Task<BaseResponse<bool>> UpdateRatings(Review review)
+        {
+            var baseResponse = new BaseResponse<bool>();
+            try
+            {
+                var product = await _productRepository.Get(review.ProductId);
+                if (product == null)
+                {
+                    baseResponse.Description = "Product not found.";
+                    baseResponse.ResponseStatus = ResponseStatus.ProductNotFound;
+                    return baseResponse;
+                }
+
+                if (review.Rate != 0)
+                {
+                    product.NumberOfRatings++;
+                }
+
+                if (review.LongevetyRate != 0)
+                {
+                    var longevityRating = product.LongevityRatings.FirstOrDefault(r => r.Rating == review.LongevetyRate);
+                    if (longevityRating != null)
+                    {
+                        longevityRating.NumberOfPeople++;
+                    }
+                    else
+                    {
+                        product.LongevityRatings.Add(new LongevityRating { Rating = review.LongevetyRate, NumberOfPeople = 1 });
+                    }
+                }
+
+                if (review.SillageRate != 0)
+                {
+                    var sillageRating = product.SillageRatings.FirstOrDefault(r => r.Rating == review.SillageRate);
+                    if (sillageRating != null)
+                    {
+                        sillageRating.NumberOfPeople++;
+                    }
+                    else
+                    {
+                        product.SillageRatings.Add(new SillageRating { Rating = review.SillageRate, NumberOfPeople = 1 });
+                    }
+                }
+
+                await _productRepository.Update(product);
+                baseResponse.ResponseStatus = ResponseStatus.OK;
+                return baseResponse;
+            }
+
+            catch (Exception ex)
+            {
+                return new BaseResponse<bool>()
+                {
+                    Description = $"[UpdateRatings] : {ex.Message}",
+                    ResponseStatus = ResponseStatus.InternalServerError,
+                };
+            }
+
         }
     }
 }

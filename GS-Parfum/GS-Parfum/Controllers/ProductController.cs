@@ -33,7 +33,7 @@ namespace GS_Parfum.Controllers
         }
 
         [HttpGet]
-        [CustomAuthorize(Role.ROLE_ADMIN)]
+        // [CustomAuthorize(Role.ROLE_ADMIN)]
         public async Task<ActionResult> GetProduct(int id)
         {
             var response = await _productService.GetProduct(id);

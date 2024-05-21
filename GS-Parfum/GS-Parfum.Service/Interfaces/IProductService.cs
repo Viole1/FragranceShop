@@ -16,6 +16,6 @@ namespace GS_Parfum.Service.Interfaces
         Task<BaseResponse<Product>> Edit(int id, Product model);
         Task<BaseResponse<bool>> DeleteProduct(int id);
         Task<BaseResponse<IEnumerable<Product>>> Select();
-
+        Task<BaseResponse<bool>> UpdateRatings(Review review);
     }
 }
