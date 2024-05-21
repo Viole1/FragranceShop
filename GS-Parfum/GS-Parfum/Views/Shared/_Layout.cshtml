@@ -11,7 +11,7 @@
 <body>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
         <div class="container">
-            @Html.ActionLink("Имя приложения", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("GS Parfum", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Переключить навигацию" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -19,27 +19,23 @@
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li>@Html.ActionLink("Домашняя страница", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    @* <li>@Html.ActionLink("Информация", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>*@
-                    @* <li>@Html.ActionLink("Связаться", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>*@
-                    <li>@Html.ActionLink("Тест", "Test", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Парфюмерия", "Perfumery", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Парфюмерия", "GetProducts", "Product", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Профиль", "Profile", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    @*<li>@Html.ActionLink("Список желаемого", "Wishlist", "Home", new { area = "" }, new { @class = "nav-link" })</li>*@
                     <li>@Html.ActionLink("Корзина", "Cart", "Cart", new { area = "" }, new { @class = "nav-link" })</li>
-                    @*@if (!application.Util.Authenticator.IsUserAuthorized(Request))
-                    {*@
+                    @if (!GS_Parfum.Util.Authenticator.IsUserAuthorized(Request))
+                    {
                         <li>@Html.ActionLink("Войти", "Login", "User", new { area = "" }, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Регистрация", "Register", "User", new { area = "" }, new { @class = "nav-link" })</li>
-                    @*}*@
+                    }
 
-                    @*@if (application.Util.Authenticator.IsUserAdmin(Request))
+                    @if (GS_Parfum.Util.Authenticator.IsUserAdmin(Request))
                     {
                         <li>@Html.ActionLink("Админ-панель", "AdminPanel", "Admin", new { area = "" }, new { @class = "nav-link" })</li>
                     }
-                    @if (application.Util.Authenticator.IsUserAuthorized(Request))
-                    {*@
+                    @if (GS_Parfum.Util.Authenticator.IsUserAuthorized(Request))
+                    {
                         <li>@Html.ActionLink("Выход", "Logout", "User", null, new { id = "logoutLink", @class = "nav-link" })</li>
-                    @*}*@
+                    }
                 </ul>
             </div>
         </div>
@@ -48,7 +44,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - мое приложение ASP.NET</p>
+            <p>&copy; @DateTime.Now.Year - GS Parfum</p>
         </footer>
     </div>
 
@@ -57,3 +53,13 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+<script>
+    $(document).ready(function () {
+        $("#logoutLink").click(function (e) {
+            e.preventDefault();
+            $.post("/User/Logout", function (data) {
+                window.location.href = "/Home/Index";
+            });
+        });
+    });
+</script>

@@ -10,7 +10,7 @@ namespace GS_Parfum.DAL.DbContexts
 {
     public class ReviewDbContext : DbContext
     {
-        public ReviewDbContext() : base("Host=localhost;Port=5432;Database=GSParfum;Username=postgres;Password=13579")
+        public ReviewDbContext() : base("Host=localhost;Port=5432;Database=GSParfum;Username=postgres;Password=04nykk")
         {
             Database.SetInitializer(new CreateDatabaseIfNotExists<ReviewDbContext>());
         }

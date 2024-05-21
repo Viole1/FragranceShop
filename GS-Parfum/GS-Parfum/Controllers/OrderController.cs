@@ -34,11 +34,11 @@ namespace GS_Parfum.Controllers
 
             await _orderService.CreateOrder(order);
             await _cartService.ClearCart(order.CartId);
-
-            return RedirectToAction("OrderList");
+            return RedirectToAction("Index", "Home");
         }
 
-        public async Task<ActionResult> OrderList()
+        [HttpGet]
+        public async Task<JsonResult> OrderList()
         {
             var token = HttpContext.Request.Cookies["AuthToken"].Value;
 
@@ -49,7 +49,7 @@ namespace GS_Parfum.Controllers
 
             var response = await _orderService.GetOrdersByUserId(id);
 
-            return View(response.Data);
+            return Json(response.Data, JsonRequestBehavior.AllowGet);
         }
     }
 }

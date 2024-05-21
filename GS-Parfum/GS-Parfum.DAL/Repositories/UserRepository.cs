@@ -43,9 +43,9 @@ namespace GS_Parfum.DAL.Repositories
             return true;
         }
 
-        public Task<List<User>> Select()
+        public async Task<List<User>> Select()
         {
-            throw new NotImplementedException();
+            return await _db.Users.ToListAsync();
         }
 
         public Task<bool> Delete(User entity)

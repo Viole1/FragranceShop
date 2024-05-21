@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "AdminPanel";
+}
+
+<h2>AdminPanel</h2>
+Количество парфюмов: @ViewBag.ProductCount
+<br />
+Количество зарегестрированных пользователей: @ViewBag.UserCount
+<br />
+
+@Html.ActionLink("Добавить товар", "Save", "Product", new { area = "" }, new { @class = "btn btn-primary" })

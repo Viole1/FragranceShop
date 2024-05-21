@@ -2,25 +2,121 @@
     ViewBag.Title = "Cart";
 }
 
-<h2>Cart</h2>
-
 @if (Model != null)
 {
-    <p>
-        Парфюмы:
-        @foreach (var i in Model.Items)
-        {
-            @i.Name<span> </span> @i.Model<span>, </span><br />
-        }
-        
-        @Model.TotalPrice
-    </p>
+    if (Model.TotalPrice != 0)
+    {
+        <p>
+            Парфюмы:
+            @foreach (var i in Model.Items)
+            {
+                @i.Name<span> </span> @i.Model<span>, </span>
+            }
+            <br />
+            @Model.TotalPrice
+        </p>
+        <button id="openPaymentModal" class="btn btn-success">Оформить заказ</button>
+
+        <div id="paymentModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Выберите способ оплаты:</h3>
+                <form id="paymentForm" action="/Order/CreateOrder" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="order.TotalPrice" value="@Model.TotalPrice">
+                    <input type="hidden" name="order.CartId" value="@Model.Id">
+                    <br />
+                    <label>
+                        <input type="radio" name="paymentMethod" value="cash"> Наличными
+                    </label>
+                    <br />
+                    <label>
+                        <input type="radio" name="paymentMethod" value="card"> Картой
+                    </label>
+                    <br />
+                    <div id="cashFields" style="display:none;">
+                    </div>
+                    <div id="cardFields" style="display:none;">
+                        <label for="cardNumber">Номер карты:</label>
+                        <input type="text" id="cardNumber" name="cardNumber"><br><br>
+                        <label for="cardName">Имя на карте:</label>
+                        <input type="text" id="cardName" name="cardName"><br><br>
+                        <label for="expiryDate">Срок действия:</label>
+                        <input type="text" id="expiryDate" name="expiryDate"><br><br>
+                        <label for="cvv">CVV:</label>
+                        <input type="text" id="cvv" name="cvv"><br><br>
+                    </div>
+                    <button type="submit" class="btn btn-success">Подтвердить</button>
+                </form>
+            </div>
+        </div>
+
+        <style>
+            /* Стили модального окна */
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 1;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: rgba(0,0,0,0.4);
+            }
+
+            .modal-content {
+                background-color: #fefefe;
+                margin: 15% auto;
+                padding: 20px;
+                border: 1px solid #888;
+                width: 80%;
+                max-width: 600px;
+            }
+
+            .close {
+                color: #aaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+
+                .close:hover,
+                .close:focus {
+                    color: black;
+                    text-decoration: none;
+                    cursor: pointer;
+                }
+        </style>
+
+        <script>
+            // Открывает модальное окно при нажатии на кнопку "Оформить заказ"
+            document.getElementById('openPaymentModal').onclick = function () {
+                document.getElementById('paymentModal').style.display = "block";
+            }
+            // Закрывает модальное окно при нажатии на кнопку "Закрыть"
+            document.getElementsByClassName('close')[0].onclick = function () {
+                document.getElementById('paymentModal').style.display = "none";
+            }
+            // Отображает или скрывает соответствующие поля в зависимости от выбранного способа оплаты
+            document.querySelectorAll('input[name="paymentMethod"]').forEach(function (element) {
+                element.addEventListener('change', function () {
+                    if (this.value === 'cash') {
+                        document.getElementById('cashFields').style.display = 'block';
+                        document.getElementById('cardFields').style.display = 'none';
+                    } else if (this.value === 'card') {
+                        document.getElementById('cashFields').style.display = 'none';
+                        document.getElementById('cardFields').style.display = 'block';
+                    }
+                });
+            });
+        </script>
+    }
+    else
+    {
+        <span>Корзина пуста.</span>
+    }
 }
-
-<form action="/Order/CreateOrder" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="order.TotalPrice" value="@Model.TotalPrice">
-    <input type="hidden" name="order.CartId" value="@Model.Id">
-    <br />
-
-    <button type="submit" id="addToCart" class="btn btn-success">Добавить в корзину</button>
-</form>
+else
+{
+    <span>Корзина пуста.</span>
+}

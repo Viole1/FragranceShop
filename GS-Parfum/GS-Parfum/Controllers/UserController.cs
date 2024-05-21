@@ -1,4 +1,5 @@
-﻿using GS_Parfum.Domain.Request;
+﻿using GS_Parfum.Domain.Entity.User;
+using GS_Parfum.Domain.Request;
 using GS_Parfum.Service.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -58,6 +59,24 @@ namespace GS_Parfum.Controllers
             if (ModelState.IsValid) 
                 await _userService.Register(model);
             return View();
+        }
+        [HttpPost]
+        public async Task<ActionResult> UpdateAddressInfo(User user)
+        {
+            await _userService.Update(user);
+            return RedirectToAction("Profile", "Home");
+        }
+        [HttpPost]
+        public ActionResult Logout()
+        {
+            if (Request.Cookies["AuthToken"] != null)
+            {
+                var c = new HttpCookie("AuthToken");
+                c.Expires = DateTime.Now.AddDays(-1);
+                c.Path = "/";
+                Response.Cookies.Add(c);
+            }
+            return RedirectToAction("Index", "Home");
         }
     }
 }

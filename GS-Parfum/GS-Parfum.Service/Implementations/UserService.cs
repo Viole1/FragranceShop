@@ -15,6 +15,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
+using System.Reflection;
 
 namespace GS_Parfum.Service.Implementations
 {
@@ -26,6 +27,31 @@ namespace GS_Parfum.Service.Implementations
         {
             _userRepository = userRepository;
             secretKey = ConfigurationManager.AppSettings["JwtSecret"];
+        }
+
+        public async Task<BaseResponse<User>> GetUserById(int id)
+        {
+            var baseResponse = new BaseResponse<User>();
+            try
+            {
+                var user = await _userRepository.Get(id);
+                if (user == null)
+                {
+                    baseResponse.Description = "User not found";
+                    baseResponse.ResponseStatus = ResponseStatus.UserNotFound;
+                    return baseResponse;
+                }
+                baseResponse.Data = user;
+                baseResponse.ResponseStatus = ResponseStatus.OK;
+                return baseResponse;
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<User>()
+                {
+                    Description = $"[GetUserById] : {ex.Message}",
+                };
+            }
         }
 
         public async Task<LoginResponse> Login(LoginRequest loginRequest)
@@ -113,6 +139,44 @@ namespace GS_Parfum.Service.Implementations
             }
             baseResponse.ResponseStatus = ResponseStatus.OK;
             return baseResponse;
+        }
+
+        public async Task<BaseResponse<bool>> Update(User user)
+        {
+            var baseResponse = new BaseResponse<bool>();
+            try
+            {
+                var newUser = await _userRepository.Get(user.Id);
+                if (newUser == null)
+                {
+                    baseResponse.Description = "User not found.";
+                    baseResponse.ResponseStatus = ResponseStatus.UserNotFound;
+                    return baseResponse;
+                }
+
+                newUser.Username = user.Username;
+                newUser.Password = user.Password;
+                newUser.Email = user.Email;
+                newUser.PhoneNumber = user.PhoneNumber;
+                newUser.Surname = user.Surname;
+                newUser.Role = user.Role;
+                newUser.DeliveryCity = user.DeliveryCity;
+                newUser.DeliveryHomeNumber = user.DeliveryHomeNumber;
+                newUser.DeliveryName = user.DeliveryName;
+                newUser.DeliveryStreet = user.DeliveryStreet;
+
+                await _userRepository.Update(newUser);
+                baseResponse.ResponseStatus = ResponseStatus.OK;
+                return baseResponse;
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<bool>()
+                {
+                    Description = $"[Update] : {ex.Message}",
+                    ResponseStatus = ResponseStatus.InternalServerError,
+                };
+            }
         }
     }
 }
